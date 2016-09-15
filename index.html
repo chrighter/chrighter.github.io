@@ -1,59 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<title>Расписание </title>
-		<style>
+ 	<head>
+  		<meta charset="utf-8">
+  		<title> Регистрация </title>
+  		<style>
 			table {
-				background-image: url("https://pp.vk.me/c630523/v630523014/48c73/acmdGIh8xVU.jpg");
-				border-color: "black";
+				border-color: orange;
 				border-style: solid;
-				align-self: "center";
-				width: "500"				
-			}
-			td {
-			    border-color: black;
-				border-style: solid;
-				height: "40";
-				width: "40";
+				align-self: center;
+				width: 100%;
 				text-align:center
 			}
-		</style>
-	</head>
+			td {
+			    border-color: orange;
+				border-style: solid;
+				text-align:center
+			}
+		</style>	
+ 	</head>
 
-	<body>	
-		<table>
+ 	<body>
+ 		<h1> Регистрация </h1>
+ 		<h4> Внимание! Поля, отмеченные (*) обязательны для заполнения </h4>
+ 		<table>
 			<tr>
-				<th colspan="3"> КБ-301 </th>
+				<th colspan="3"> Адрес и пароль </th>
 			</tr>
 			<tr>
-				<td rowspan="7"> <b> ЧЕТВЕРГ </b> </td>
-				<td> <b> I <br> 9:00 </b> </td>
-				<td> </td>
+				<td> (*) E-mail: </td>
+				<td> <input type="email" autocomplete="on" placeholder="Адрес эл. почты" pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" required>  </td>
+				<td> Введите адрес электронной почты </td>
+			</tr>
+			<tr>	
+				<td> (*) Пароль: </td>
+				<td> <input type="password" placeholder="Пароль" pattern="(?=^.{10,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required> </td>
+				<td rowspan="2"> Обратите внимание, что Ваш пароль должен содержать строчные и прописные латинские буквы, цифры, спецсимволы. Его длина должна превышать 10 символов </td>
+			</tr>	
+			<tr>
+				<td> (*) Повторите пароль: </td>
+				<td> <input type="password" placeholder="Пароль" required> </td>
 			</tr>
 			<tr>
-				<td> <b> II <br> 10:40 </b> </td>
-				<td> </td>
+				<th colspan="3"> Если Вы забудете пароль </th>
 			</tr>
 			<tr>
-				<td> <b> III <br> 12:50 </b> </td>
-				<td> <b> <i> Web и DHTML, 621, доц. Волканин Л.С. </i> </b> </td>
+				<td> (*) Выберите вопрос: </td>
+				<td> 
+					<select>
+  						<option>Любимый учитель</option>
+  						<option>Домашнее животное</option>
+  						<option>Множество с ассоциативной бинарной алгебраической операцией</option>
+					</select> 
+				</td>
+				<td rowspan="2"> Пожалуйста, не забывайте вопрос и ответ </td>
 			</tr>
 			<tr>
-				<td> <b> IV <br> 14:30 </b> </td>
-				<td> <b> <i> Теория алгоритмов, 632, проф. Шур А.М. </i> </b> </td>
+				<td> (*) Ответ: </td>
+				<td> <input type="text" autocomplete="on" placeholder="Ответ на вопрос" required> </td>
 			</tr>
 			<tr>
-				<td> <b> V <br> 16:10 </b> </td>
-				<td> <b> <i> Интернет, 511, доц. Волканин Л.С. </i> </b> </td>
+				<td> Запасной e-mail: </td>
+				<td> <input type="text" autocomplete="on" placeholder="Адрес другого ящика эл. почты"> </td>
+				<td> На этот e-mail мы вышлем Вам пароль, если Вы его забудете</td>
 			</tr>
 			<tr>
-				<td rowspan="2"> <b> VI <br> 17:50 </b> </td>
-				<td> <br> </td>
+				<th colspan="3"> Информация о пользователе </th>
 			</tr>
 			<tr>
-				<td> <b> <i> Теория алгоритмов, 612, Попович А.М  </i> </b> </td>
+				<td> (*) Имя </td>
+				<td> <input type="text" autocomplete="on" placeholder="Имя" required pattern="[a-zA-Z]{1,50}$"> </td>
+				<td rowspan="4"> Ваши данные </td>
 			</tr>
-		</table> 
-	</body>
+			<tr>
+				<td> (*) Фамилия </td>
+				<td> <input type="text" autocomplete="on" placeholder="Фамилия" required pattern="[a-zA-Z]{1,50}$"> </td>
+			</tr>
+			<tr>
+				<td> (*) Дата рождения </td>
+				<td> 
+					<input type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" name="created" max="2009-01-01" min="1947-01-30">
+				</td>
+			</tr>
+			<tr>
+				<td> (*) Ваш пол </td>
+				<td>  
+					<input type="radio" name="browser" id="radio1" value="firefox">
+						<label for="radio1">
+							Мужской 
+						</label>
+					<input type="radio" name="browser" id="radio2" value="firefox"> 
+						<label for="radio2"> 
+							Женский 
+						</label> 
+				</td>
+			</tr>
+			<tr>
+				<th colspan="3"> Соглашение об использовании </th>
+			</tr>
+			<tr>
+				<td colspan="3"> <input type="checkbox" id="checkbox"> 
+					<label for="checkbox"> 
+						Я прочитал(прочитала) и согласен(согласна) с Пользовательским соглашением, а также с Политикой конфиденциальности данного портала 
+					</label> 
+				</td> 
+			</tr>
+			<tr>
+				<td colspan="3"> <button type="submit"> Зарегистрироваться! </button> </td>
+			</tr>
+		</table> 		
+ 	</body> 	
 </html>
