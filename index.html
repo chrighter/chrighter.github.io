@@ -13,7 +13,7 @@
 	    		return keynum;
 	        }
 
-  			function myKeyPress(event) {    			
+  			function keyPress(event) {    			
   				key += String.fromCharCode(listener(event));
 				if (key.length == 12) {
 					if (key == "Мопед не мой") {
@@ -28,6 +28,6 @@
   			}   		
 		</script>
     </head>
-    <body onkeypress="myKeyPress(event)">
+    <body onkeypress="keyPress(event)">
     </body>
 </html>
