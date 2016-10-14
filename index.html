@@ -1,112 +1,37 @@
 <!DOCTYPE html>
 <html>
- 	<head>
-  		<meta charset="utf-8">
-  		<title> Регистрация </title>
-  		<style>
-			table {
-				border-color: orange;
-				border-style: solid;
-				align-self: center;
-				width: 100%;
-				text-align:center
-			}
-			td {
-			    border-color: orange;
-				border-style: solid;
-				text-align:center
-			}
-		</style>	
- 	</head>
+    <head>
+        <title>dom1</title>
+        <meta charset="utf-8">
+        <script>
+	        var key = "";
+	        function listener(e) {
+	        	console.log("list")
+	        	var keynum;
+	  			if(window.event) {                 
+	      			keynum = e.keyCode || e.which;
+	      			console.log(keynum)
+	    		}
+	    		return keynum
+	        }
 
- 	<body>
- 		<h1> Регистрация </h1>
- 		<h4> Внимание! Поля, отмеченные (*) обязательны для заполнения </h4>
- 		<table>
-			<tr>
-				<th colspan="3"> Адрес и пароль </th>
-			</tr>
-			<tr>
-				<td> (*) E-mail: </td>
-				<td> <input type="email" autocomplete="on" placeholder="Адрес эл. почты" pattern="^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$" required>  </td>
-				<td> Введите адрес электронной почты </td>
-			</tr>
-			<tr>	
-				<td> (*) Пароль: </td>
-				<td> <input type="password" placeholder="Пароль" pattern="(?=^.{10,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required> </td>
-				<td rowspan="2"> Обратите внимание, что Ваш пароль должен содержать строчные и прописные латинские буквы, цифры, спецсимволы. Его длина должна превышать 10 символов </td>
-			</tr>	
-			<tr>
-				<td> (*) Повторите пароль: </td>
-				<td> <input type="password" placeholder="Пароль" required> </td>
-			</tr>
-			<tr>
-				<th colspan="3"> Если Вы забудете пароль </th>
-			</tr>
-			<tr>
-				<td> (*) Выберите вопрос: </td>
-				<td> 
-					<select>
-  						<option>Любимый учитель</option>
-  						<option>Домашнее животное</option>
-  						<option>Множество с ассоциативной бинарной алгебраической операцией</option>
-					</select> 
-				</td>
-				<td rowspan="2"> Пожалуйста, не забывайте вопрос и ответ </td>
-			</tr>
-			<tr>
-				<td> (*) Ответ: </td>
-				<td> <input type="text" autocomplete="on" placeholder="Ответ на вопрос" required> </td>
-			</tr>
-			<tr>
-				<td> Запасной e-mail: </td>
-				<td> <input type="text" autocomplete="on" placeholder="Адрес другого ящика эл. почты"> </td>
-				<td> На этот e-mail мы вышлем Вам пароль, если Вы его забудете</td>
-			</tr>
-			<tr>
-				<th colspan="3"> Информация о пользователе </th>
-			</tr>
-			<tr>
-				<td> (*) Имя: </td>
-				<td> <input type="text" autocomplete="on" placeholder="Ваше имя" required pattern="[a-zA-Z]{1,50}$"> </td>
-				<td rowspan="4"> Ваши данные </td>
-			</tr>
-			<tr>
-				<td> (*) Фамилия: </td>
-				<td> <input type="text" autocomplete="on" placeholder="Ваша фамилия" required pattern="[a-zA-Z]{1,50}$"> </td>
-			</tr>
-			<tr>
-				<td> (*) Дата рождения: </td>
-				<td> 
-					<input type="date" pattern="(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}" name="created" max="2009-01-01" min="1947-01-30">
-				</td>
-			</tr>
-			<tr>
-				<td> (*) Ваш пол: </td>
-				<td>  
-					<input type="radio" name="browser" id="radio1" value="firefox">
-						<label for="radio1">
-							Мужской 
-						</label>
-					<input type="radio" name="browser" id="radio2" value="firefox"> 
-						<label for="radio2"> 
-							Женский 
-						</label> 
-				</td>
-			</tr>
-			<tr>
-				<th colspan="3"> Соглашение об использовании </th>
-			</tr>
-			<tr>
-				<td colspan="3"> <input type="checkbox" id="checkbox"> 
-					<label for="checkbox"> 
-						Я прочитал(прочитала) и согласен(согласна) с Пользовательским соглашением, а также с Политикой конфиденциальности данного портала 
-					</label> 
-				</td> 
-			</tr>
-			<tr>
-				<td colspan="3"> <button type="submit"> Зарегистрироваться! </button> </td>
-			</tr>
-		</table> 		
- 	</body> 	
+  			function myKeyPress(e) {    			
+  				key += String.fromCharCode(listener(e))
+  				console.log(key)
+				if (key.length == 12) {
+					if (key == "Мопед не мой") {
+						console.log(key)
+						alert("Я просто разместил объяву!");	
+						key = "";
+						document.body.style.backgroundImage = "url(\"http://cs6.pikabu.ru/images/big_size_comm/2015-02_4/1424369842148.jpg\")"
+					}
+					else {
+						key = "";
+					}
+				}
+  			}   		
+		</script>
+    </head>
+    <body onkeypress="myKeyPress(event)">
+    </body>
 </html>
