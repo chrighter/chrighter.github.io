@@ -1,29 +1,25 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>dom1</title>
+        <title>Secret phrase</title>
         <meta charset="utf-8">
         <script>
 	        var key = "";
-	        function listener(e) {
-	        	console.log("list")
+	        function listener(event) {
 	        	var keynum;
-	  			if(window.event) {                 
-	      			keynum = e.keyCode || e.which;
-	      			console.log(keynum)
+	  			if (window.event) {                 
+	      			keynum = event.keyCode || event.which;
 	    		}
-	    		return keynum
+	    		return keynum;
 	        }
 
-  			function myKeyPress(e) {    			
-  				key += String.fromCharCode(listener(e))
-  				console.log(key)
+  			function myKeyPress(event) {    			
+  				key += String.fromCharCode(listener(event));
 				if (key.length == 12) {
 					if (key == "Мопед не мой") {
-						console.log(key)
 						alert("Я просто разместил объяву!");	
 						key = "";
-						document.body.style.backgroundImage = "url(\"http://cs6.pikabu.ru/images/big_size_comm/2015-02_4/1424369842148.jpg\")"
+						document.body.style.backgroundImage = "url(\"http://cs6.pikabu.ru/images/big_size_comm/2015-02_4/1424369842148.jpg\")";
 					}
 					else {
 						key = "";
