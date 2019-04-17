@@ -129,15 +129,8 @@ function makePayment() {
             console.info('params', params);
 
             return fetch('process-payment', params)
-                .then(response => {
-                    // paymentResponse.complete() используется для закрытия
-                    // пользовательского интерфейса запроса на оплату
-                    console.info('response-response', response);
-                    if(response.status === 200) {
-                        return paymentResponse.complete('success');
-                    }
-
-                    return paymentResponse.complete('fail');
+                .then(() => {
+                    return paymentResponse.complete('success');
                 })
                 .then(() => {
                     document.getElementById('status').innerHTML = 'Заказ выполнен!';
