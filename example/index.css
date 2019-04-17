@@ -1,0 +1,100 @@
+html
+{
+    font-family: sans-serif;
+}
+
+body
+{
+    width: 470px;
+
+    margin: auto;
+
+    font-size: 0.9em;
+}
+
+.PR-form
+{
+    padding: 20px;
+
+    color: #ffd05f;
+    background: #000;
+}
+
+.header,
+.product__title
+{
+    color: #e3363d;
+}
+
+.preview,
+.order-summary,
+.product
+{
+    margin: 10px 0;
+}
+
+.product__title,
+.product__price
+{
+    margin: 10px;
+}
+
+.product
+{
+    display: flex;
+    align-items: center;
+}
+
+.product__image img
+{
+    width: 70px;
+    height: 70px;
+
+    border-radius: 10px;
+}
+
+.header
+{
+    margin: 0 0 20px;
+}
+
+.footer,
+.pic
+{
+    margin: 10px 0;
+}
+
+.pic img
+{
+    width: 430px;
+
+    border-radius: 12px;
+}
+
+.btn-pay
+{
+    padding: 10px;
+
+    color: #ffd05f;
+    background: #e3363d;
+
+    border-radius: 2px;
+    border: none;
+
+    outline: none;
+
+    cursor: pointer;
+}
+
+.btn-pay:hover
+{
+    background: #dc143c;
+
+    transition: all .25s ease-in-out;
+}
+
+.footer,
+.status
+{
+    font-size: 0.8em;
+}

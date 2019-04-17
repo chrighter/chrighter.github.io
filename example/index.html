@@ -1,0 +1,42 @@
+<!doctype html>
+<html>
+    <meta charset="utf8"/>
+    <link href="index.css" rel="stylesheet" type="text/css">
+    <title>Payment Request API Demo</title>
+    <body>
+        <div class="PR-form">
+            <h1 class="header">Payment Request API Demo</h1>
+            <div class="preview">Ой, а тут покупают ДММ-мерч</div>
+            <div class="order-summary">
+                <div class="product">
+                    <div class="product__image">
+                        <img src="images/t-short-dmm.png" alt="t-short-dmm">
+                    </div>
+                    <div class="product__description">
+                        <div class="product__title">Футболка ДММ</div>
+                        <div class="product__price">RUB 650.00</div>
+                    </div>
+                </div>
+                <div class="product">
+                    <div class="product__image">
+                        <img src="images/socks-dmm.png" alt="socks-dmm">
+                    </div>
+                    <div class="product__description">
+                        <div class="product__title">Носки ДММ</div>
+                        <div class="product__price">RUB 300.00</div>
+                    </div>
+                </div>
+                <button class="btn-pay">Купить</button>
+                <div class="pic">
+                    <img src="images/full-dmm.png">
+                </div>
+                <div class="footer">
+                    <strong>Примечание:</strong>
+                    вы не будете платить за этот потрясающий мерч, это всего лишь демо!
+                </div>
+                <div id="status"></div>
+            </div>
+        </div>
+        <script src="js/PRApi.js"></script>
+    </body>
+</html>
