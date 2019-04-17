@@ -128,7 +128,7 @@ function makePayment() {
 
             console.info('params', params);
 
-            return fetch('../example/process-payment.html', params)
+            return fetch('/example/process-payment.html', params)
                 .then(response => {
                     // paymentResponse.complete() используется для закрытия
                     // пользовательского интерфейса запроса на оплату
