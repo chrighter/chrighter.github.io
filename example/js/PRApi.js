@@ -31,55 +31,46 @@ function makePayment() {
         }
     ];
 
-    //Set some details
     var details = {
-        total: {
-            label: 'ДММ мерч',
-            amount: {
-                currency: 'RUB',
-                value: '950.00'
-            }
-        },
         displayItems: [
             {
-                label: '1 x Футболка dmm',
+                label: '1 x Футболка ДММ',
                 amount: {
                     currency: 'RUB',
                     value: '650.00'
                 }
-            },
-            {
-                label: '1 x Носки dmm',
-                amount: {
-                    currency: 'RUB',
-                    value: '300'
-                }
             }
         ],
+        total: {
+            label: 'ДММ мерч',
+            amount: {
+                currency: 'RUB',
+                value: '650.00'
+            }
+        }
         // Удалите параметры доставки из деталей, если вы хотите,
         // чтобы событие изменения адреса доставки (shippingaddresschange) сработало
-        shippingOptiыons: [
-            {
-                id: 'standard',
-                label: 'Standard shipping',
-                amount: {
-                    currency: 'RUB',
-                    value: '50.00'
-                },
-                selected: true
-            },
-            {
-                id: 'express',
-                label: 'Express shipping',
-                amount: {
-                    currency: 'RUB',
-                    value: '150.00'
-                }
-            }
-        ]
+        // shippingOptions: [
+        //     {
+        //         id: 'standard',
+        //         label: 'Standard shipping',
+        //         amount: {
+        //             currency: 'RUB',
+        //             value: '50.00'
+        //         },
+        //         selected: true
+        //     },
+        //     {
+        //         id: 'express',
+        //         label: 'Express shipping',
+        //         amount: {
+        //             currency: 'RUB',
+        //             value: '150.00'
+        //         }
+        //     }
+        // ]
     };
 
-    //Set some options
     var options = {
         requestShipping: true,
         requestPayerEmail: true,
@@ -89,14 +80,14 @@ function makePayment() {
     // Теперь пришло время построить объект запроса
     var paymentRequest = new PaymentRequest(methodData, details, options);
 
-    //Handle shipping address choice
+    // Обработчик изменения адреса доставки
     paymentRequest.addEventListener("shippingaddresschange", changeEvent => {
         changeEvent.updateWith(new Promise((resolve, reject) => {
             handleAddressChange(details, paymentRequest.shippingAddress, resolve, reject);
         }));
     });
 
-    //Handle shipping options choice
+    // Обработчик изменения опций доставки
     paymentRequest.addEventListener("shippingoptionchange", changeEvent => {
         changeEvent.updateWith(new Promise((resolve, reject) => {
             handleOptionChange(details, paymentRequest.shippingOption, resolve, reject);
@@ -126,9 +117,7 @@ function makePayment() {
                 method: 'POST'
             };
 
-            console.info('params', params);
-
-            return fetch('process-payment', params)
+            return fetch('process-payment.html', params)
                 .then(() => {
                     return paymentResponse.complete('success');
                 })
@@ -159,7 +148,7 @@ function handleAddressChange(details, shippingAddress, resolve, reject) {
         case 'RU': {
             shippingStandard = {
                 id: 'RU Standard',
-                label: 'Standard shipping Russia',
+                label: 'Standard shipping Russia 🚛',
                 amount: {
                     currency: 'RUB',
                     value: '50.00'
@@ -169,7 +158,7 @@ function handleAddressChange(details, shippingAddress, resolve, reject) {
 
             shippingExpress = {
                 id: 'RU Express',
-                label: 'Express shipping Russia',
+                label: 'Express shipping Russia 🚀',
                 amount: {
                     currency: 'RUB',
                     value: '250.00'
@@ -187,7 +176,7 @@ function handleAddressChange(details, shippingAddress, resolve, reject) {
         default: {
             shippingStandard = {
                 id: 'International Standard',
-                label: 'Standard shipping International',
+                label: 'Standard shipping International 🚛',
                 amount: {
                     currency: 'RUB',
                     value: '150.00'
@@ -197,7 +186,7 @@ function handleAddressChange(details, shippingAddress, resolve, reject) {
 
             shippingExpress = {
                 id: 'International Express',
-                label: 'Express shipping International',
+                label: 'Express shipping International 🚀',
                 amount: {
                     currency: 'RUB',
                     value: '450.00'
@@ -222,23 +211,18 @@ function handleAddressChange(details, shippingAddress, resolve, reject) {
 }
 
 function handleOptionChange(details, shippingOption, resolve, reject) {
-    //remove tax & shipping from our display items
+    // Удаляем из сводки заказа налог и доставку
+    while (details.displayItems.length>1) details.displayItems.pop();
 
-    console.info('etails.displayItems-details.displayItems', details.displayItems);
+    details.shippingOptions.forEach(option => {
+        if (shippingOption === option.id) {
+            option.selected = true;
 
-    while(details.displayItems.length>1) details.displayItems.pop();
-
-
-
-    //Match the shipping option
-    for(var i=0;i<details.shippingOptions.length;i++) {
-        if(shippingOption === details.shippingOptions[i].id) {
-            details.shippingOptions[i].selected = true;
-            details.displayItems.push(details.shippingOptions[i]);
+            details.displayItems.push(option);
         } else {
-            details.shippingOptions[i].selected = false;
+            option.selected = false;
         }
-    }
+    })
 
     details = updateDetails(details);
 
@@ -246,8 +230,6 @@ function handleOptionChange(details, shippingOption, resolve, reject) {
 }
 
 function updateDetails(details) {
-    console.info('details-details', details);
-
     // Удалить последний элемент отображения (налог)
     if(details.displayItems.length>2) details.displayItems.pop();
 
@@ -272,7 +254,7 @@ function updateDetails(details) {
 
 function calculateTax(items, rate) {
     const total = items.reduce((acc, item) => {
-        if (item.amount.label !== 'VAT 20%') {
+        if (item.amount.label !== 'НДС 20%') {
             acc += Number(item.amount.value);
         }
 
