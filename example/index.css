@@ -14,10 +14,16 @@ body
 
 .PR-form
 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
     padding: 20px;
 
     color: #ffd05f;
     background: #000;
+
+    transform: translate(-50%, -50%);
 }
 
 .header,
@@ -59,7 +65,8 @@ body
 }
 
 .footer,
-.pic
+.pic,
+.status
 {
     margin: 10px 0;
 }
@@ -73,12 +80,14 @@ body
 
 .btn-pay
 {
+    width: 70px;
+
     padding: 10px;
 
     color: #ffd05f;
     background: #e3363d;
 
-    border-radius: 2px;
+    border-radius: 6px;
     border: none;
 
     outline: none;
@@ -97,4 +106,11 @@ body
 .status
 {
     font-size: 0.8em;
+}
+
+.status,
+.btn-pay
+{
+    display: inline-block;
+    vertical-align: middle;
 }
