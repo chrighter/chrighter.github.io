@@ -28,6 +28,9 @@ function makePayment() {
                     'debit', 'credit'
                 ]
             }
+        },
+        {
+            supportedMethods: "https://apple.com/apple-pay",
         }
     ];
 
@@ -117,22 +120,47 @@ function makePayment() {
                 method: 'POST'
             };
 
+            console.info('paymentResponse', paymentResponse)
+
             return fetch('process-payment.html', params)
-                .then(() => {
-                    return paymentResponse.complete('success');
+                .then(response => {
+                    console.info('response', response)
+                    if(response.status == 200) {
+                        console.info('1');
+                        return paymentResponse.complete('success');
+                    }
+                    else {
+                        console.info('2');
+                        return paymentResponse.complete('fail');
+                    }
                 })
-                .then(() => {
-                    document.getElementById('status').innerHTML = 'Заказ выполнен!';
-                })
-                // Ловим неожиданные ошибки
-                .catch((err) => {
-                    return paymentResponse.complete('fail');
+                .then(() => document.getElementById('status').innerHTML = 'Order complete!')
+                .catch(() => {
+                    console.info('3');
+                    paymentResponse.complete('fail')
                 });
 
-        })
-        .catch(err => {
-            document.getElementById('status').innerHTML = 'Oooops, не удалось завершить покупку(((';
-        });
+            }).catch(function(err) {
+                console.info('4');
+              document.getElementById('status').innerHTML = 'Could not complete purchase at this time';
+            });
+
+            // return fetch('process-payment.html', params)
+            //     .then(() => {
+            //         return paymentResponse.complete('success');
+            //     })
+            //     .then(() => {
+            //         document.getElementById('status').innerHTML = 'Заказ выполнен!';
+            //     })
+            //     // Ловим неожиданные ошибки
+            //     .catch((err) => {
+            //         return paymentResponse.complete('fail');
+            //     });
+
+        // })
+        // .catch(err => {
+        //     document.getElementById('status').innerHTML = 'Oooops, не удалось завершить покупку(((';
+        // });
     }
 
 function handleAddressChange(details, shippingAddress, resolve, reject) {
